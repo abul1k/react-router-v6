@@ -1,5 +1,7 @@
-const Users = () => {
-  return <div>Users</div>
+export const Users = () => {
+  return (
+    <div>
+      <h1 className='text-4xl'>Users</h1>
+    </div>
+  )
 }
-
-export default Users

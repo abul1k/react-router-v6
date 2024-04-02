@@ -1,9 +1,11 @@
-import { Router } from './router/Router'
+import { AppRouter } from '@/router/AppRouter'
 
 export const App = () => {
+  const currentTheme = 'dark'
+
   return (
-    <>
-      <Router />
-    </>
+    <div className={currentTheme}>
+      <AppRouter />
+    </div>
   )
 }

@@ -1,15 +1,10 @@
-import { MainLayout } from '../../layout/MainLayout'
 import { UserDetails } from './pages/UserDetails'
-import Users from './views/Users'
+import { Users } from './views/Users'
 
 const routes = [
   {
     path: '/users',
-    element: (
-      <MainLayout>
-        <Users />
-      </MainLayout>
-    ),
+    element: <Users />,
   },
   {
     path: '/users/:id',
