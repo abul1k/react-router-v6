@@ -8,7 +8,7 @@ export const Sidebar = () => {
     <div>
       Sidebar
       {sidebar.map((route) => (
-        <div key={route.path}>
+        <div key={route.path} className=''>
           <NavLink to={route.path}>{route.name}</NavLink>
         </div>
       ))}
