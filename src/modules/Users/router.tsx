@@ -1,4 +1,4 @@
-import { UserDetails } from './pages/UserDetails'
+import { UserDetails } from './views/UserDetails'
 import { Users } from './views/Users'
 
 const routes = [
