@@ -1,10 +1,10 @@
 import { AppRouter } from '@/router/AppRouter'
 
 export const App = () => {
-  const currentTheme = 'dark'
+  const isDarkMode = false
 
   return (
-    <div className={currentTheme}>
+    <div className={isDarkMode ? 'dark' : ''}>
       <AppRouter />
     </div>
   )

@@ -6,10 +6,10 @@ export const MainLayout = () => {
   return (
     <>
       <Sidebar />
-      <div>
+      <Navbar />
+      <div className='bg-lightGray dark:bg-slate-800 h-[100vh] pl-[16vw] pt-[70px]'>
         <Outlet />
       </div>
-      <Navbar />
     </>
   )
 }

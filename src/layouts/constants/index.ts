@@ -2,13 +2,13 @@ import { ISidebarItems } from "./interface";
 
 export const sidebarItems: ISidebarItems[] = [
   {
-    icon: '',
+    icon: 'HomeIcon',
     name: 'Home',
     path: '/home',
     children: []
   },
   {
-    icon: '',
+    icon: 'UsersIcon',
     name: 'Users',
     path: '/users',
     children: []
