@@ -10,12 +10,15 @@ export const AppRouter = () => {
   const isAuthorized = true //fake authorization
 
   const mainRoutes = createBrowserRouter([
+    // modules
     {
       path: '/',
-      element: isAuthorized ? <MainLayout /> : <Navigate to='/login' replace />,
+      element: <MainLayout />,
       errorElement: <NotFound404 />,
       children: [...home, ...users],
     },
+
+    // authorization pages
     {
       path: '/',
       element: <AuthLayout />,
@@ -24,7 +27,14 @@ export const AppRouter = () => {
     },
   ])
 
-  const loginNotRequiredRoutes = createBrowserRouter([...auth])
+  const loginNotRequiredRoutes = createBrowserRouter([
+    {
+      path: '/',
+      element: <AuthLayout />,
+      errorElement: <Navigate to='/login' replace />,
+      children: [...auth],
+    },
+  ])
 
   return (
     <>

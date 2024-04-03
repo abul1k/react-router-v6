@@ -5,7 +5,7 @@ import { ISidebarItems } from '../constants/interface'
 export const Sidebar = () => {
   const sidebar: ISidebarItems[] = sidebarItems
   return (
-    <div>
+    <div className='sidebar'>
       Sidebar
       {sidebar.map((route) => (
         <div key={route.path} className=''>

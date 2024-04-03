@@ -4,7 +4,7 @@ export const sidebarItems: ISidebarItems[] = [
   {
     icon: '',
     name: 'Home',
-    path: '/',
+    path: '/home',
     children: []
   },
   {
