@@ -1,3 +1,3 @@
 .navbar {
-  @apply fixed top-0 right-0 w-[85vw] h-[56.5px] bg-darkGreen flex items-center px-4
+  @apply fixed z-10 top-3 md:left-[16vw] left-3 md:w-[83vw] w-[94vw] h-[65px] bg-light dark:bg-dark flex items-center px-4 rounded-lg
 }

@@ -1,7 +1,7 @@
 import { AppRouter } from '@/router/AppRouter'
 
 export const App = () => {
-  const isDarkMode = false
+  const isDarkMode = true
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>

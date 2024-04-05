@@ -1,5 +1,42 @@
+.sidebar-overflow {
+  @media screen and (max-width: 768px) {
+    @apply fixed z-20 top-0 left-0 w-[100vw] h-[100vh] transition-all duration-500 ease-out pointer-events-none;
+
+    &.open {
+      @apply bg-darkGray/50 pointer-events-auto;
+
+      .sidebar {
+        @apply left-0
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &.open {
+      .sidebar {
+        @apply w-[15vw];
+
+        &_brand {
+          &_name {
+            @apply visible;
+          }
+        }
+
+        &_routes {
+          &_route {
+            @apply flex gap-2 items-center w-[100%] px-4 py-3;
+          }
+          span {
+            @apply visible
+          }
+        }
+      }
+    }
+  }
+}
+
 .sidebar {
-  @apply fixed bg-darkGreen w-[15vw] h-[100vh];
+  @apply fixed z-30 top-0 -left-[70vw] md:left-0 bg-light dark:bg-dark md:w-[5vw] w-[70vw] h-[100vh] transition-all duration-500;
 
   &_brand {
     @apply px-4 py-3 flex justify-between items-center mb-5;
@@ -14,18 +51,18 @@
 
     &_route {
       @apply flex gap-2 items-center w-[90%] px-4 py-3 rounded-lg;
-
-      span {
-        @apply text-secondary
-      }
     }
 
     &_route_active {
       @apply sidebar_routes_route bg-primary/5;
 
       span {
-        @apply text-primary
+        @apply text-primary 
       }
+    }
+
+    span {
+      @apply hidden;
     }
   }
 }

@@ -10,8 +10,10 @@ export default {
         danger: '#ea5455',
         warning: '#ff9f43',
         info: '#9333EA',
-        darkGreen: '#ffffff',
+        light: '#ffffff',
+        dark: '#181a1b',
         lightGray: '#eef2f6',
+        darkGray: '#1f2223',
       },
       boxShadow: {
         badgeShadow: '0 0 10px',
