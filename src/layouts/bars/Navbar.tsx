@@ -7,7 +7,7 @@ export const Navbar = () => {
     navigate('/login')
   }
   return (
-    <div className='navbar'>
+    <div className='navbar shadow'>
       <div className='flex justify-between w-full items-center'>
         <div className='flex gap-2'>
           <Icons icon='Bars3Icon' className='w-6 h-6 text-primary visible md:hidden' />

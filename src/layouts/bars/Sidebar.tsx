@@ -9,10 +9,10 @@ export const Sidebar = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="sidebar">
-      <div className="sidebar_container">
+    <div className="sidebar close">
+      <div className="sidebar_container shadow">
         <div className="sidebar_container_brand">
-          <h1 className="sidebar_container_brand_name">React JS</h1>
+          <h1 className="sidebar_container_brand_name"><span className='text-primary'>I</span>nsider</h1>
           <button className="sidebar_container_brand_toggler">
             <Icons icon="Bars3Icon" className="w-6 h-6 text-primary" />
           </button>

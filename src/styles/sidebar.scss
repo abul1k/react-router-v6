@@ -6,7 +6,7 @@
       @apply relative w-full px-4 flex justify-between items-center h-[10vh];
 
       &_name {
-        @apply text-2xl font-medium text-primary whitespace-nowrap
+        @apply text-2xl font-medium whitespace-nowrap
       }
 
       &_toggler {
@@ -24,13 +24,12 @@
           @apply bg-primary/5;
 
           span {
-            @apply text-primary 
+            @apply text-primary
           }
         }
 
         i {
-          @apply absolute top-[50%] -translate-y-[50%] left-[15px]
-          transition-all duration-300 ease-out
+          @apply absolute top-[50%] -translate-y-[50%] left-[15px] transition-all duration-300 ease-out
         }
 
         span {
