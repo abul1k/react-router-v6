@@ -15,6 +15,10 @@ body {
   a {
     @apply text-secondary dark:text-lightGray
   }
+
+  .card {
+    @apply bg-light dark:bg-dark rounded p-4 shadow
+  }
 }
 
 @import "sidebar";

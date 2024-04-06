@@ -1,16 +1,16 @@
 .sidebar {
   &_container {
-    @apply fixed overflow-hidden z-30 top-0 left-0 bg-light dark:bg-dark w-[15vw] h-[100vh] transition-all duration-300;
+    @apply fixed overflow-hidden z-30 top-0 left-0 bg-light dark:bg-dark min-w-[200px] w-[15vw] h-[100vh] transition-all duration-300;
 
     &_brand {
-      @apply relative w-full px-4 flex justify-between items-center h-[10vh];
+      @apply relative w-full px-4 flex justify-between items-center h-[80px];
 
       &_name {
         @apply text-2xl font-medium whitespace-nowrap
       }
 
       &_toggler {
-        @apply absolute top-[0%] right-0 flex items-center justify-center h-[10vh] min-w-[5vw] bg-light dark:bg-dark transition-all duration-300
+        @apply absolute top-[0%] right-0 flex items-center justify-center h-[80px] min-w-[5vw] bg-light dark:bg-dark transition-all duration-300
       }
     }
 
@@ -18,7 +18,7 @@
       @apply flex justify-center;
 
       &_route {
-        @apply relative w-[90%] h-[6vh] rounded-lg;
+        @apply relative w-[90%] h-[45px] rounded-lg;
 
         &.active {
           @apply bg-primary/5;

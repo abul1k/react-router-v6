@@ -1,9 +1,15 @@
-import { Input } from '@/components'
 import { SyntheticEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Input } from '@/components'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 export const Login = () => {
   const navigate = useNavigate()
+  const [user, setUser] = useLocalStorage('user', {
+    username: '',
+    password: '',
+  })
+
   const onSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
     navigate('/')
@@ -16,22 +22,22 @@ export const Login = () => {
         onSubmit={onSubmit}>
         <div className="w-full">
           <h1 className="text-center text-3xl font-medium mb-5">Login</h1>
-          <div className="mb-4">
-            <Input
-              id="username"
-              label="Username"
-              placeholder="Username"
-              type="text"
-            />
-          </div>
-          <div className="mb-6">
-            <Input
-              id="password"
-              label="Password"
-              placeholder="Password"
-              type="password"
-            />
-          </div>
+          <Input
+            className="mb-4"
+            id="username"
+            label="Username"
+            type="text"
+            value={user.username}
+            onChange={(e) => setUser({ ...user, username: e.target.value })}
+          />
+          <Input
+            className="mb-6"
+            id="password"
+            label="Password"
+            type="password"
+            value={user.password}
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+          />
           <input
             className="cursor-pointer bg-primary w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"

@@ -1,6 +1,6 @@
 export const Users = () => {
   return (
-    <div>
+    <div className="card">
       <h1 className='text-4xl'>Users</h1>
     </div>
   )
