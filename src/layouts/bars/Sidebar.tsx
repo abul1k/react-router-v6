@@ -7,30 +7,33 @@ import { Icons, SidebarIcons } from '@/components'
 export const Sidebar = () => {
   const sidebar: ISidebarItems[] = sidebarItems
   const { pathname } = useLocation()
+
   return (
-    <div className='sidebar-overflow'>
-      <div className='sidebar'>
-        <div className='sidebar_brand'>
-          <h1 className='sidebar_brand_name'>React JS</h1>
-          <button>
-            <Icons icon='Bars3Icon' className='w-6 h-6 text-primary' />
+    <div className="sidebar">
+      <div className="sidebar_container">
+        <div className="sidebar_container_brand">
+          <h1 className="sidebar_container_brand_name">React JS</h1>
+          <button className="sidebar_container_brand_toggler">
+            <Icons icon="Bars3Icon" className="w-6 h-6 text-primary" />
           </button>
         </div>
         {sidebar.map((route) => (
-          <div key={route.path} className='sidebar_routes'>
+          <div key={route.path} className="sidebar_container_routes">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? 'sidebar_routes_route_active'
-                  : 'sidebar_routes_route'
+                  ? 'sidebar_container_routes_route active'
+                  : 'sidebar_container_routes_route'
               }
               to={route.path}>
-              <SidebarIcons
-                icon={route.icon}
-                className={`w-4 h-4 ${
-                  pathname === route.path ? 'text-primary' : ''
-                }`}
-              />
+              <i>
+                <SidebarIcons
+                  icon={route.icon}
+                  className={`w-4 h-4 ${
+                    pathname === route.path ? 'text-primary' : ''
+                  }`}
+                />
+              </i>
               <span>{route.name}</span>
             </NavLink>
           </div>

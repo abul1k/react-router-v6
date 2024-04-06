@@ -1,68 +1,61 @@
-.sidebar-overflow {
-  @media screen and (max-width: 768px) {
-    @apply fixed z-20 top-0 left-0 w-[100vw] h-[100vh] transition-all duration-500 ease-out pointer-events-none;
-
-    &.open {
-      @apply bg-darkGray/50 pointer-events-auto;
-
-      .sidebar {
-        @apply left-0
-      }
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    &.open {
-      .sidebar {
-        @apply w-[15vw];
-
-        &_brand {
-          &_name {
-            @apply visible;
-          }
-        }
-
-        &_routes {
-          &_route {
-            @apply flex gap-2 items-center w-[100%] px-4 py-3;
-          }
-          span {
-            @apply visible
-          }
-        }
-      }
-    }
-  }
-}
-
 .sidebar {
-  @apply fixed z-30 top-0 -left-[70vw] md:left-0 bg-light dark:bg-dark md:w-[5vw] w-[70vw] h-[100vh] transition-all duration-500;
+  &_container {
+    @apply fixed overflow-hidden z-30 top-0 left-0 bg-light dark:bg-dark w-[15vw] h-[100vh] transition-all duration-300;
 
-  &_brand {
-    @apply px-4 py-3 flex justify-between items-center mb-5;
+    &_brand {
+      @apply relative w-full px-4 flex justify-between items-center h-[10vh];
 
-    &_name {
-      @apply text-2xl font-medium text-primary
-    }
-  }
+      &_name {
+        @apply text-2xl font-medium text-primary whitespace-nowrap
+      }
 
-  &_routes {
-    @apply flex justify-center;
-
-    &_route {
-      @apply flex gap-2 items-center w-[90%] px-4 py-3 rounded-lg;
-    }
-
-    &_route_active {
-      @apply sidebar_routes_route bg-primary/5;
-
-      span {
-        @apply text-primary 
+      &_toggler {
+        @apply absolute top-[0%] right-0 flex items-center justify-center h-[10vh] min-w-[5vw] bg-light dark:bg-dark transition-all duration-300
       }
     }
 
-    span {
-      @apply hidden;
+    &_routes {
+      @apply flex justify-center;
+
+      &_route {
+        @apply relative w-[90%] h-[6vh] rounded-lg;
+
+        &.active {
+          @apply bg-primary/5;
+
+          span {
+            @apply text-primary 
+          }
+        }
+
+        i {
+          @apply absolute top-[50%] -translate-y-[50%] left-[15px]
+          transition-all duration-300 ease-out
+        }
+
+        span {
+          @apply absolute top-[50%] -translate-y-[50%] left-10 transition-all duration-300 ease-out
+        }
+      }
+    }
+  }
+
+  &.closed &_container {
+    @apply w-[5vw];
+
+    &_routes {
+
+      &_route {
+        @apply flex gap-0 w-[80%] justify-center;
+
+        i {
+          @apply left-[35%] ease-in
+        }
+
+        span {
+          @apply left-20 ease-in
+        }
+      }
     }
   }
 }
