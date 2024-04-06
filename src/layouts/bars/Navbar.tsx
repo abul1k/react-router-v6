@@ -29,7 +29,7 @@ export const Navbar = () => {
             className="w-10 h-10 text-primary mx-2"
           />
           <button
-            className="flex gap-2 items-center text-secondary dark:text-lightGray hover:bg-primary/5 hover:text-primary px-4 py-2 rounded-md"
+            className="flex gap-2 items-center text-secondary dark:text-lightGray hover:bg-primary/5 hover:text-primary px-4 py-2 rounded"
             onClick={logout}>
             Logout
             <Icons icon="ArrowRightOnRectangleIcon" className="w-6 h-6" />

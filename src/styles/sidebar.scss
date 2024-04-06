@@ -18,7 +18,7 @@
       @apply flex justify-center;
 
       &_route {
-        @apply relative w-[90%] h-[45px] rounded-lg;
+        @apply relative w-[90%] h-[45px] rounded;
 
         &.active {
           @apply bg-primary/5;
