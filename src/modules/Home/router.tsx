@@ -1,5 +1,6 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 import { Home } from './views/Home'
+import ProtectedRoute from '@/router/ProtectedRoute'
 
 const routes: RouteObject[] = [
   {
@@ -8,7 +9,11 @@ const routes: RouteObject[] = [
   },
   {
     path: '/home',
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
   },
 ]
 

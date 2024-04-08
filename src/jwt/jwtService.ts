@@ -1,14 +1,12 @@
 import $axios from '@/plugins/axios'
 import { ILoginData, IRegisterData } from '@/views/auth/interface'
 import { IUserData } from './interface'
-import { redirect } from 'react-router-dom'
 import {
   loginEndpoint,
   refreshEndpoint,
   refreshTokenKeyName,
   registerEndpoint,
   tokenKeyName,
-  userKeyName,
 } from './jwt.config'
 
 export async function login(
@@ -16,8 +14,7 @@ export async function login(
 ): Promise<{ data: { access: string; refresh: string } }> {
   const { data } = await $axios.post(loginEndpoint, args)
   setAccessToken(data.access)
-  setRefreshToken(data.refresh)
-  setUserData(data.data)
+  // setRefreshToken(data.refresh)
 
   return data
 }
@@ -25,16 +22,13 @@ export async function login(
 export function logout() {
   document.cookie = 'access=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
   document.cookie = 'refresh=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-  document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-
-  redirect('/login')
 }
 
 export function register(args: IRegisterData): Promise<IUserData> {
   return $axios.post(registerEndpoint, args)
 }
 
-export function setAccessToken(value: object): void {
+export function setAccessToken(value: string): void {
   setCookie(tokenKeyName, value, 7)
 }
 
@@ -42,7 +36,7 @@ export function getAccessToken() {
   return getCookie(tokenKeyName)
 }
 
-export function setRefreshToken(value: object): void {
+export function setRefreshToken(value: string): void {
   setCookie(refreshTokenKeyName, value, 7)
 }
 
@@ -50,15 +44,8 @@ export function getRefreshToken() {
   return getCookie(refreshTokenKeyName)
 }
 
-export function setUserData(value: object): void {
-  setCookie(userKeyName, value, 7)
-}
-
-export function getUserData() {
-  const cookies = document.cookie.split(';')
-  const userCookie = cookies.find((cookie) => cookie.includes('user='))
-
-  if (userCookie) return JSON.parse(userCookie.split('=')[1])
+export function getUserData(): IUserData {
+  return parseJWT(getCookie(tokenKeyName)).id;
 }
 
 export function refreshToken() {
@@ -67,14 +54,14 @@ export function refreshToken() {
   })
 }
 
-function setCookie(name: string, value: object, expirationDays: number) {
+function setCookie(name: string, value: string, expirationDays: number) {
   const date = new Date()
   date.setTime(date.getTime() + expirationDays * 24 * 60 * 60 * 1000)
   const expires = 'expires=' + date.toUTCString()
   document.cookie = name + '=' + value + ';' + expires + ';path=/'
 }
 
-function getCookie(name: string) {
+function getCookie(name: string): string {
   const cookieString = document.cookie
   const cookieArray = cookieString.split('; ')
   for (const cookie of cookieArray) {
@@ -83,5 +70,23 @@ function getCookie(name: string) {
       return value
     }
   }
-  return null
+  return ""
+}
+
+function parseJWT(token: string) {
+  if (token) {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  }
+
+  return {}
 }

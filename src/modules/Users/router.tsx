@@ -1,14 +1,23 @@
+import ProtectedRoute from '@/router/ProtectedRoute'
 import { UserDetails } from './views/UserDetails'
 import { Users } from './views/Users'
 
 const routes = [
   {
     path: '/users',
-    element: <Users />,
+    element: (
+      <ProtectedRoute>
+        <Users />
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/users/:id',
-    element: <UserDetails />,
+    element: (
+      <ProtectedRoute>
+        <UserDetails />
+      </ProtectedRoute>
+    ),
   },
 ]
 

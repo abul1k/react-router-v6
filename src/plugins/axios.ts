@@ -31,7 +31,6 @@ axiosIns.interceptors.response.use(
         window.location.pathname !== '/sign-in' &&
         window.location.pathname !== '/sign-up'
       ) {
-        window.location.href = '/sign-in'
         logout()
       }
     }
