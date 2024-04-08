@@ -17,7 +17,7 @@ export const Login = () => {
     try {
       await login(user)
       toast.success('Successfully logged in')
-      navigate('/')
+      navigate('/home')
     } catch (error: any) {
       console.log(error.message)
       toast.error(error?.response?.data?.message || error.message)

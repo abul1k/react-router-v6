@@ -22,9 +22,5 @@ export const AppRouter = () => {
     },
   ])
 
-  return (
-    <>
-      <RouterProvider router={mainRoutes} />
-    </>
-  )
+  return <RouterProvider router={mainRoutes} />
 }
