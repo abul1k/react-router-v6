@@ -1,18 +1,21 @@
-import { SyntheticEvent } from 'react'
+import { SyntheticEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Input } from '@/components'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { login } from '@/jwt/jwtService'
 
 export const Login = () => {
   const navigate = useNavigate()
-  const [user, setUser] = useLocalStorage('user', {
+
+  const [user, setUser] = useState({
     username: '',
     password: '',
   })
 
   const onSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
-    navigate('/')
+
+    login(user)
+    navigate('/login')
   }
 
   return (
